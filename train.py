@@ -80,7 +80,7 @@ def get_classification_model(model_name, dataset, conf):
     """Get classification model from configuration
     """
     model = globals()[model_name](dataset, conf)
-    #model = model.cuda(conf.device) if conf.device.startswith("cuda") else model
+    model = model.cuda(conf.device) if conf.device.startswith("cuda") else model
     return model
 
 
@@ -260,7 +260,7 @@ def new_train(train_json):
     print(config)
     #os.environ['CUDA_VISIBLE_DEVICES'] = str(config.train.visible_device_list)
     torch.manual_seed(2019)
-    #torch.cuda.manual_seed(2019)
+    torch.cuda.manual_seed(2019)
     train(config)
 
 
